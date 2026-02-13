@@ -1,0 +1,24 @@
+#!/bin/bash
+
+export XDG_CONFIG_HOME="$HOME/.config"
+mkdir -p "$XDG_CONFIG_HOME"
+mkdir -p "$XDG_CONFIG_HOME/nixpkgs"
+
+ln -sf "$PWD/nvim" "$XDG_CONFIG_HOME/nvim"
+
+ln -sf "$PWD/.zshrc" "$HOME/.zshrc"
+ln -sf "$PWD/.zprofile" "$HOME/.zprofile"
+ln -sf "$PWD/.zsh_aliases" "$HOME/.zsh_aliases"
+ln -sf "$PWD/.zsh_func" "$HOME/.zsh_func"
+ln -sf "$PWD/tmux" "$XDG_CONFIG_HOME/tmux"
+ln -sf "$PWD/config.nix" "$XDG_CONFIG_HOME/nixpkgs/config.nix"
+ln -sf "$PWD/starship/starship.toml" "$XDG_CONFIG_HOME/starship.toml"
+ln -sf "$PWD/k9s" "$XDG_CONFIG_HOME/k9s"
+
+mkdir -p $HOME/.local/share/fonts
+cp $PWD/fonts/UbuntuMono* $HOME/.local/share/fonts
+
+nix-env -iA nixpkgs.myPackages
+
+# git clone https://github.com/davidparsson/zsh-pyenv-lazy.git ~/.oh-my-zsh/custom/plugins/pyenv-lazy
+# git clone https://github.com/kadaan/zsh-rbenv-lazy.git ~/.oh-my-zsh/custom/plugins/rbenv-lazy
