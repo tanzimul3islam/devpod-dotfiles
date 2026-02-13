@@ -16,6 +16,7 @@
         kubectx
         k9s
         fluxcd
+        direnv
       ];
     };
   };
