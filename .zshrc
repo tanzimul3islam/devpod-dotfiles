@@ -1,6 +1,12 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Fix container TERM
+if [[ "$TERM" == "alacritty" ]]; then
+  export TERM=xterm-256color
+fi
+
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -103,9 +109,6 @@ source ~/.zsh_func
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/twood5/.rd/bin:$PATH"
-## #MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 [ -f $HOME/.config/gcloud/terraform-credentials.json ] && export GOOGLE_CREDENTIALS="$HOME/.config/gcloud/terraform-credentials.json"
 export PYENV_ROOT="$HOME/.pyenv"
@@ -117,15 +120,10 @@ export PATH="/usr/local/sbin:$PATH"
 #eval "$(pyenv virtualenv-init -)"
 
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/twood5/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/twood5/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/twood5/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/twood5/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 # Fix history scrolling
-bindkey "$terminfo[kcuu1]" up-history
-bindkey "$terminfo[kcud1]" down-history
+[[ -n "$terminfo[kcuu1]" ]] && bindkey "$terminfo[kcuu1]" up-history
+[[ -n "$terminfo[kcud1]" ]] && bindkey "$terminfo[kcud1]" down-history
 
 # Create a new widget.
 zle -N backward-kill-space-word
@@ -147,6 +145,9 @@ backward-kill-bash-word() {
 # Bind the widgets to keys.
 bindkey   '^W' backward-kill-space-word
 bindkey '^[^H' backward-kill-bash-word
+
+
+
 
 unsetopt HIST_VERIFY
 export PATH="/opt/homebrew/opt/postgresql@10/bin:$PATH"
