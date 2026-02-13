@@ -20,5 +20,5 @@ cp $PWD/fonts/UbuntuMono* $HOME/.local/share/fonts
 
 nix-env -iA nixpkgs.myPackages
 
-# git clone https://github.com/davidparsson/zsh-pyenv-lazy.git ~/.oh-my-zsh/custom/plugins/pyenv-lazy
-# git clone https://github.com/kadaan/zsh-rbenv-lazy.git ~/.oh-my-zsh/custom/plugins/rbenv-lazy
+git clone https://github.com/davidparsson/zsh-pyenv-lazy.git ~/.oh-my-zsh/custom/plugins/pyenv-lazy
+git clone https://github.com/kadaan/zsh-rbenv-lazy.git ~/.oh-my-zsh/custom/plugins/rbenv-lazy
